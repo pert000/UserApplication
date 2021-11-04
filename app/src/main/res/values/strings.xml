@@ -2,4 +2,6 @@
     <string name="app_name">UserApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_username">(mariami)</string>
+    <string name="repository_name">mariam pertia</string>
 </resources>

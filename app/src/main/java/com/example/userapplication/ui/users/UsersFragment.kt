@@ -37,13 +37,14 @@ class UsersFragment : Fragment() {
         viewModel.usersRespons.observe(viewLifecycleOwner) {
             when (it.status) {
                 Resource.Status.LOADING -> {
-                    Log.d("^_^", "init: LOADING ")
+
                 }
                 Resource.Status.ERROR -> {
-                    Log.d("^_^", "init: ERROR ")
+                    //todo loader and error message
                 }
                 Resource.Status.SUCCESS -> {
-                    Log.d("^_^", "init: SUCCESS ")
+                    adapter = UsersAdapter(requireContext(), it.data!!)
+                    setupRecycler()
                 }
 
 
@@ -53,10 +54,11 @@ class UsersFragment : Fragment() {
 
     }
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        adapter = UsersAdapter(requireContext())
-        setupRecycler()
+
+
 
     }
 
