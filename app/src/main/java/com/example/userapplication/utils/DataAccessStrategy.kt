@@ -1,0 +1,19 @@
+package com.example.userapplication.utils
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
+import com.example.userapplication.date.Resource
+import kotlinx.coroutines.Dispatchers
+
+fun <T> performGetOperation(networkCall: suspend () -> Resource<T>): LiveData<Resource<T>> =
+    liveData(Dispatchers.IO) {
+        emit(Resource.loading())
+
+        val responseStatus = networkCall.invoke()
+        if (responseStatus.status == Resource.Status.SUCCESS) {
+            emit(Resource.success(responseStatus.data!!))
+
+        } else if (responseStatus.status == Resource.Status.ERROR) {
+            emit(Resource.error(responseStatus.message!!))
+        }
+    }
