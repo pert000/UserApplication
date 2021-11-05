@@ -20,7 +20,7 @@
         android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@id/dateCreated"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Details" />
+        tools:text="language" />
     <TextView
         android:id="@+id/description"
         android:layout_width="0dp"

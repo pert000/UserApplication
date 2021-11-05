@@ -29,9 +29,7 @@ class UsersFragment : Fragment() {
     }
 
     private fun init() {
-//        binding.text.setOnClickListener {
-//            Navigation.findNavController(it).navigate(R.id.action_usersFragment_to_detailsFragment)
-//        }
+
         viewModel.getUsers()
 
         viewModel.usersRespons.observe(viewLifecycleOwner) {
@@ -55,12 +53,6 @@ class UsersFragment : Fragment() {
     }
 
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-
-
-    }
 
     private fun setupRecycler() {
         context?.apply {
