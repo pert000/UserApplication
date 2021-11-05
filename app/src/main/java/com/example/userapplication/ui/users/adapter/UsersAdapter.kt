@@ -12,9 +12,13 @@ import com.example.userapplication.databinding.UserItemBinding
 import com.example.userapplication.model.UserRespons
 import com.example.userapplication.utils.ExtraKeys
 
-class UsersAdapter(val context: Context,private val users: List<UserRespons>) :
+class UsersAdapter(val context: Context,private var users: List<UserRespons>) :
     RecyclerView.Adapter< UsersAdapter.ViewHolder>() {
 
+    fun setData(users: List<UserRespons>) {
+        this.users = users
+        notifyDataSetChanged()
+    }
 
 
 

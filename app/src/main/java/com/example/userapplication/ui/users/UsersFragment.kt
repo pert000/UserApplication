@@ -1,23 +1,28 @@
 package com.example.userapplication.ui.users
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.userapplication.databinding.FragmentUsersBinding
 import com.example.userapplication.date.Resource
+import com.example.userapplication.model.UserRespons
 import com.example.userapplication.ui.users.adapter.UsersAdapter
 import com.example.userapplication.ui.users.viewmodel.UsersViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
+
 
 @AndroidEntryPoint
 class UsersFragment : Fragment() {
     private val viewModel: UsersViewModel by viewModels()
+    lateinit var users: List<UserRespons>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +36,7 @@ class UsersFragment : Fragment() {
     private fun init() {
 
         viewModel.getUsers()
-
+        search()
         viewModel.usersRespons.observe(viewLifecycleOwner) {
             when (it.status) {
                 Resource.Status.LOADING -> {
@@ -41,8 +46,10 @@ class UsersFragment : Fragment() {
                     //todo loader and error message
                 }
                 Resource.Status.SUCCESS -> {
+                    users = it.data!!
                     adapter = UsersAdapter(requireContext(), it.data!!)
                     setupRecycler()
+
                 }
 
 
@@ -52,6 +59,26 @@ class UsersFragment : Fragment() {
 
     }
 
+    private fun search() {
+        binding.search.setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener {
+
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText != null) {
+
+                        adapter.setData( users.filter { it.name.toLowerCase().contains(newText.toLowerCase()) })
+                        adapter.notifyDataSetChanged()
+                    }
+                    return false
+                }
+            }
+        )
+
+    }
 
 
     private fun setupRecycler() {

@@ -50,7 +50,7 @@ data class UserRespons(
     val merges_url: String?,
     val milestones_url: String?,
     val mirror_url: String?,
-    val name: String?,
+    val name: String,
     val node_id: String?,
     val notifications_url: String?,
     val open_issues_count: Int?,
