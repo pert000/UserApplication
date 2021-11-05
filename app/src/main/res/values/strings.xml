@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">UserApplication</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="default_username">(mariami)</string>
     <string name="repository_name">mariam pertia</string>
     <string name="error_text">some error text</string>
+    <string name="no_desctiption_text">Has no description</string>
 </resources>

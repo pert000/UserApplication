@@ -3,30 +3,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.details.DetailsFragment">
+
+
+    <TextView
+        android:id="@+id/dateCreated_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"
+        android:text="Date:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <TextView
         android:id="@+id/dateCreated"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/dateCreated_title"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Details" />
+        tools:text="yyyy-MM-dd'T'HH:mm:ss" />
+
+    <TextView
+        android:id="@+id/language_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dateCreated"
+        android:textColor="@color/black"
+        android:text="Language:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
     <TextView
         android:id="@+id/language"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@id/dateCreated"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/language_title"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="language" />
+    <TextView
+        android:id="@+id/description_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/language"
+        android:textColor="@color/black"
+        android:text="Description:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"/>
     <TextView
         android:id="@+id/description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        app:layout_constraintTop_toBottomOf="@id/language"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toBottomOf="@id/description_title"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="description" />
 
@@ -38,6 +76,7 @@
         android:clickable="true"
         android:layout_marginTop="28dp"
         android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description"

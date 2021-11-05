@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.userapplication.R
 import com.example.userapplication.databinding.FragmentDetailsBinding
 import com.example.userapplication.model.UserRespons
 import com.example.userapplication.utils.ExtraKeys
@@ -34,7 +35,11 @@ class DetailsFragment : Fragment() {
     private fun init() {
         userRespons = arguments?.getParcelable(ExtraKeys.REPOSITORY_INFO)
         binding.language.text = userRespons?.language
-        binding.description.text = userRespons?.description
+        binding.description.text = if (userRespons?.description.isNullOrEmpty()) {
+            getString(R.string.no_desctiption_text)
+        } else {
+            userRespons?.description
+        }
         binding.hyperLink.movementMethod = LinkMovementMethod.getInstance()
         binding.hyperLink.text = userRespons?.url
 
